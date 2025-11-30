@@ -6,7 +6,7 @@ import { Facebook, Lock } from "lucide-react";
 import { useLanguageStore } from "@/src/contexts/LanguageStore";
 
 export const SignIn = () => {
-  const t = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.t);
 
   const { isLoaded, signIn } = useSignIn();
 
@@ -37,62 +37,64 @@ export const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center px-4 py-20">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-[#1B4D3E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Lock size={32} className="text-[#1B4D3E]" />
+    <div className="flex min-h-screen items-center justify-center bg-[#F8F9FA] px-4 py-20">
+      <div className="w-full max-w-md rounded-2xl border border-gray-100 bg-white p-8 shadow-xl">
+        <div className="mb-8 text-center">
+          <div className="bg-primary/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+            <Lock size={32} className="text-primary" />
           </div>
-          <h2 className="text-2xl font-serif font-bold text-[#1B4D3E]">
-            {t.login.title}
+          <h2 className="text-primary font-serif text-2xl font-bold">
+            {trans.login.title}
           </h2>
-          <p className="text-gray-500 text-sm mt-2">{t.login.subtitle}</p>
+          <p className="mt-2 text-sm text-gray-500">{trans.login.subtitle}</p>
         </div>
         <button
           onClick={handleFacebookSignIn}
-          className="w-full bg-[#1877F2] text-white py-3 rounded-lg font-bold hover:bg-[#166fe5] flex items-center justify-center gap-3 mb-6"
+          className="mb-6 flex w-full items-center justify-center gap-3 rounded-lg bg-[#1877F2] py-3 font-bold text-white hover:bg-[#166fe5]"
         >
-          <Facebook size={20} className="fill-current" /> {t.login.fbBtn}
+          <Facebook size={20} className="fill-current" /> {trans.login.fbBtn}
         </button>
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-200"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">{t.login.or}</span>
+            <span className="bg-white px-2 text-gray-500">
+              {trans.login.or}
+            </span>
           </div>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t.login.userLabel}
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              {trans.login.userLabel}
             </label>
             <input
               type="text"
-              className="w-full px-4 py-3 rounded-lg border border-gray-200"
+              className="w-full rounded-lg border border-gray-200 px-4 py-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="user, admin"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t.login.passLabel}
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              {trans.login.passLabel}
             </label>
             <input
               type="password"
-              className="w-full px-4 py-3 rounded-lg border border-gray-200"
+              className="w-full rounded-lg border border-gray-200 px-4 py-3"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="password"
             />
           </div>
-          {error && <p className="text-red-500 text-xs text-center">{error}</p>}
+          {error && <p className="text-center text-xs text-red-500">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-[#1B4D3E] text-white py-3 rounded-lg font-bold"
+            className="bg-primary w-full rounded-lg py-3 font-bold text-white"
           >
-            {t.login.submitBtn}
+            {trans.login.submitBtn}
           </button>
         </form>
       </div>
