@@ -13,6 +13,7 @@ import { Navbar } from "../components/layout/navbar";
 
 import { Footer } from "../components/layout/footer";
 import { ClerkStateSynchronizer } from "../components/layout/ClerkStateSynchronizer";
+import { GlobalNotification } from "../components/layout/globalNotification";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
         >
           <ClerkStateSynchronizer />
           <div className="min-h-screen bg-white">
+            <GlobalNotification />
             <Navbar />
             {children}
             <Footer />
