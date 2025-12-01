@@ -2,17 +2,20 @@ import Image from "next/image";
 import { ProductType } from "../types/product.type";
 import { ShoppingBag } from "lucide-react";
 import { useLanguageStore } from "../contexts/LanguageStore";
+import { useRouter } from "next/navigation";
 
 export const ProductCard = ({ product }: { product: ProductType }) => {
-  const trans = useLanguageStore((state) => state.t);
+  const router = useRouter();
+
+  const trans = useLanguageStore((state) => state.trans);
   const lang = useLanguageStore((state) => state.lang);
   return (
     <div
-      //   onClick={() => onClick(product)}
+      onClick={() => router.push(`/product/${product.id}`)}
       className="group hover:border-secondary/50 relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:shadow-xl"
     >
       <div className="relative flex h-64 items-center justify-center bg-[#F8F9FA] p-8 transition-colors duration-300 group-hover:bg-white">
-        {product.tag && (
+        {product?.tag && (
           <span className="text-primary absolute top-4 left-4 z-10 rounded-full border border-gray-100 bg-white/90 px-3 py-1 text-[10px] font-bold tracking-wider uppercase shadow-sm backdrop-blur">
             {product.tag}
           </span>
@@ -23,15 +26,6 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
           fill
           className="relative z-0 mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
         />
-        <button
-          //   onClick={(e) => {
-          //     e.stopPropagation();
-          //     onAddToCart(product);
-          //   }}
-          className="text-primary hover:bg-primary absolute right-4 bottom-4 z-10 translate-y-12 cursor-pointer rounded-full border border-gray-100 bg-white p-3 opacity-0 shadow-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:text-white"
-        >
-          <ShoppingBag size={18} />
-        </button>
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-secondary mb-1 text-xs font-medium tracking-wider uppercase">
@@ -44,8 +38,17 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
           <span className="text-primary text-lg font-bold">
             ฿{product.price.toLocaleString()}
           </span>
-          <span className="text-xs text-gray-400">{trans.shop.stock}</span>
+          <button
+            //   onClick={(e) => {
+            //     e.stopPropagation();
+            //     onAddToCart(product);
+            //   }}
+            className="text-primary hover:bg-primary cursor-pointer rounded-full border border-gray-100 bg-white p-3 shadow-md hover:text-white"
+          >
+            <ShoppingBag size={18} />
+          </button>
         </div>
+        <span className="text-xs text-gray-400">{trans.shop.stock}</span>
       </div>
     </div>
   );

@@ -5,11 +5,31 @@ import { initialProducts } from "@/src/data/mockdata";
 import { useState } from "react";
 
 export const Shop = () => {
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
 
   const [activeCategory, setActiveCategory] = useState("all");
+
+  const filteredProducts = initialProducts.filter(
+    (p) => activeCategory === "all" || p.category === activeCategory,
+  );
+
+  const content =
+    filteredProducts.length > 0 ? (
+      filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))
+    ) : (
+      <div className="rounded-xl border bg-gray-50 py-10 text-center sm:col-span-2 lg:col-span-4">
+        <h3 className="text-xl font-bold text-gray-700">
+          {trans.shop.emptyTitle || "No Products Found"}
+        </h3>
+        <p className="text-gray-500">
+          {trans.shop.emptySubtitle || "Try selecting a different category."}
+        </p>
+      </div>
+    );
   return (
-    <div className="min-h-screen border-t border-gray-50 bg-[#FFFFFF] py-16">
+    <div className="border-t border-gray-50 bg-[#FFFFFF] py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h1 className="text-primary mb-4 font-serif text-4xl font-bold">
@@ -36,13 +56,7 @@ export const Shop = () => {
           })}
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {initialProducts
-            .filter(
-              (p) => activeCategory === "all" || p.category === activeCategory,
-            )
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          {content}
         </div>
       </div>
     </div>

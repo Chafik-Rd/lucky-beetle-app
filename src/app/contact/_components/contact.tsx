@@ -4,10 +4,10 @@ import { useLanguageStore } from "@/src/contexts/LanguageStore";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export const Contact = () => {
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
 
   return (
-    <div className="min-h-screen border-t border-gray-50 bg-[#FFFFFF] py-16">
+    <div className="border-t border-gray-50 bg-[#FFFFFF] py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
           <div>

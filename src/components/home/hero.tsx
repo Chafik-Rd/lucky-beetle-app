@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export const HeroPage = () => {
   const router = useRouter();
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
   return (
     <>
       <div className="relative overflow-hidden bg-white pt-16 pb-24">

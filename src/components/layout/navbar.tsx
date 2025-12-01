@@ -25,7 +25,7 @@ export const Navbar = () => {
   const pathname = usePathname();
   const currentPage = pathname === "/" ? "home" : pathname.slice(1);
 
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
   const lang = useLanguageStore((state) => state.lang);
   const toggleLang = useLanguageStore((state) => state.toggleLang);
   const cartCount = useProductStore((state) => state.count);
@@ -59,7 +59,7 @@ export const Navbar = () => {
             {navKeys.map((key) => (
               <button
                 key={key}
-                onClick={() => router.push(key)}
+                onClick={() => router.push(`/${key}`)}
                 className={`cursor-pointer text-sm font-medium tracking-wider uppercase ${
                   currentPage === key
                     ? "text-primary"
@@ -71,7 +71,7 @@ export const Navbar = () => {
             ))}
             {userRole === "admin" && (
               <button
-                onClick={() => router.push("admin")}
+                onClick={() => router.push("/admin")}
                 className="flex cursor-pointer items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-sm font-bold tracking-wider text-red-600 uppercase"
               >
                 <Settings size={14} /> {trans.nav.admin}
@@ -137,7 +137,7 @@ export const Navbar = () => {
             <button
               key={key}
               onClick={() => {
-                router.push(key);
+                router.push(`/${key}`);
                 setIsMenuOpen(false);
               }}
               className="block w-full text-left text-gray-700"

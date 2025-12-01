@@ -8,7 +8,7 @@ type TranslationObject = typeof translations.th;
 interface LanguageState {
   // State
   lang: Lang;
-  t: TranslationObject; // เก็บ Translation Object ที่ใช้งานอยู่
+  trans: TranslationObject; // เก็บ Translation Object ที่ใช้งานอยู่
 
   // Actions
   setLang: (newLang: Lang) => void;
@@ -18,13 +18,13 @@ interface LanguageState {
 export const useLanguageStore = create<LanguageState>((set, get) => ({
   // ค่าเริ่มต้น
   lang: "th",
-  t: translations.th as TranslationObject,
+  trans: translations.th as TranslationObject,
 
   // Action: กำหนดภาษาใหม่
   setLang: (newLang) =>
     set({
       lang: newLang,
-      t: translations[newLang] as TranslationObject, // อัปเดต Translation Object
+      trans: translations[newLang] as TranslationObject, // อัปเดต Translation Object
     }),
 
   // Action: สลับภาษา (Toggle)
@@ -33,7 +33,7 @@ export const useLanguageStore = create<LanguageState>((set, get) => ({
       const newLang = state.lang === "th" ? "en" : "th";
       return {
         lang: newLang,
-        t: translations[newLang] as TranslationObject, // อัปเดต Translation Object
+        trans: translations[newLang] as TranslationObject, // อัปเดต Translation Object
       };
     }),
 }));

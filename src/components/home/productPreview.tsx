@@ -8,7 +8,7 @@ import { ProductCard } from "../productCard";
 
 export const ProductPreview = () => {
   const router = useRouter();
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
 
   return (
     <div className="bg-white py-20">

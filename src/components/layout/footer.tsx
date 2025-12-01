@@ -3,7 +3,7 @@
 import { useLanguageStore } from "@/src/contexts/LanguageStore";
 
 export const Footer = () => {
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
   return (
     <footer className="border-t border-gray-100 bg-white py-16">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between px-4 text-center md:flex-row md:text-left">

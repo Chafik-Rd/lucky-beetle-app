@@ -6,7 +6,7 @@ interface ILocalizedText {
 export interface BaseProductType {
   id: number;
   name: ILocalizedText;
-  scientific: string;
+  entityType: "beetle" | "supply";
   price: number;
   category: string;
   image: string;
@@ -14,8 +14,18 @@ export interface BaseProductType {
   isAuction: boolean;
 }
 
-export interface ProductType extends BaseProductType {
+export interface BeetleType extends BaseProductType {
+  entityType: "beetle";
+  isAuction: false;
+  scientific: string;
   tag?: "best seller" | "new" | "rare";
+}
+
+export interface SupplyType extends BaseProductType {
+  entityType: "supply";
+  isAuction: false;
+  brand: string;
+  unit: string;
 }
 
 interface BidLog {
@@ -23,10 +33,22 @@ interface BidLog {
   amount: number;
   timestamp: Date;
 }
-export interface AuctionItemType extends BaseProductType {
+interface AuctionItemType {
+  isAuction: true;
   startingBid: number;
   currentBid?: number;
   endTime: number;
   bids: number;
   bidHistory: BidLog[];
 }
+
+export interface BeetleAuctionItemType
+  extends Omit<BeetleType, "isAuction">, AuctionItemType {}
+export interface SupplyAuctionItemType
+  extends Omit<SupplyType, "isAuction">, AuctionItemType {}
+
+export type ProductType =
+  | BeetleType
+  | BeetleAuctionItemType
+  | SupplyType
+  | SupplyAuctionItemType;

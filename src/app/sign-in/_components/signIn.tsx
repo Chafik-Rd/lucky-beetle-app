@@ -6,7 +6,7 @@ import { Facebook, Lock } from "lucide-react";
 import { useLanguageStore } from "@/src/contexts/LanguageStore";
 
 export const SignIn = () => {
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
 
   const { isLoaded, signIn } = useSignIn();
 
@@ -37,7 +37,7 @@ export const SignIn = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F8F9FA] px-4 py-20">
+    <div className="flex items-center justify-center bg-[#F8F9FA] px-4 py-20">
       <div className="w-full max-w-md rounded-2xl border border-gray-100 bg-white p-8 shadow-xl">
         <div className="mb-8 text-center">
           <div className="bg-primary/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">

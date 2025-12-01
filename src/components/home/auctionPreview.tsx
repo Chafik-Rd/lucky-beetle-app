@@ -8,7 +8,7 @@ import { initialAuctions } from "../../data/mockdata";
 
 export const AuctionPreview = () => {
   const router = useRouter();
-  const trans = useLanguageStore((state) => state.t);
+  const trans = useLanguageStore((state) => state.trans);
   const lang = useLanguageStore((state) => state.lang);
 
   return (
