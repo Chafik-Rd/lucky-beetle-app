@@ -20,10 +20,7 @@ export const ProductDetail = () => {
   const selectedProduct = ProductMockData.find(
     (product) => product.id === Number(productId),
   );
-  if (!selectedProduct) {
-    router.replace(`/`);
-    return null;
-  }
+  
 
   return (
     <div className="bg-white pt-8 pb-20">
@@ -37,7 +34,7 @@ export const ProductDetail = () => {
           <ArrowLeft size={20} className="mr-2" /> {trans.product.back}
         </button>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-[#F8F9FA] p-10">
+          <div className="relative flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-[#F8F9FA] p-10">
             <Image src={selectedProduct.image} fill alt="detail" />
           </div>
           <div>
