@@ -17,6 +17,7 @@ export interface BaseProductType {
 export interface BeetleType extends BaseProductType {
   entityType: "beetle";
   isAuction: false;
+  price: number;
   scientific: string;
   tag?: "best seller" | "new" | "rare";
 }

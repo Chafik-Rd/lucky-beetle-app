@@ -21,10 +21,10 @@ export const Shop = () => {
     ) : (
       <div className="rounded-xl border bg-gray-50 py-10 text-center sm:col-span-2 lg:col-span-4">
         <h3 className="text-xl font-bold text-gray-700">
-          {trans.shop.emptyTitle || "No Products Found"}
+          { "No Products Found"}
         </h3>
         <p className="text-gray-500">
-          {trans.shop.emptySubtitle || "Try selecting a different category."}
+          { "Try selecting a different category."}
         </p>
       </div>
     );

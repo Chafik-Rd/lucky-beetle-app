@@ -88,10 +88,10 @@ export const Auction = () => {
           ) : (
             <div className="rounded-xl border bg-gray-50 py-10 text-center md:col-span-2">
               <h3 className="text-xl font-bold text-gray-700">
-                {trans.auction.emptyTitle || "No Auctions Available"}
+                { "No Auctions Available"}
               </h3>
               <p className="text-gray-500">
-                {trans.auction.emptySubtitle || "Please check back later."}
+                { "Please check back later."}
               </p>
             </div>
           )}

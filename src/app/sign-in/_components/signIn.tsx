@@ -26,11 +26,12 @@ export const SignIn = () => {
     if (!isLoaded) return;
 
     try {
-      await signIn.authenticateWithRedirect({
+      const response = await signIn.authenticateWithRedirect({
         strategy: "oauth_facebook",
         redirectUrl: "/sso-callback",
         redirectUrlComplete: "/",
       });
+      console.log("Facebook sign-in response:", response);
     } catch (err) {
       console.error("Facebook sign-in failed:", err);
     }

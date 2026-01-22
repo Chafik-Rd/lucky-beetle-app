@@ -2,10 +2,26 @@
 
 import { useLanguageStore } from "@/src/contexts/LanguageStore";
 import { Mail, MapPin, Phone } from "lucide-react";
+import axios from "axios";
+import { useAuth } from "@clerk/nextjs";
 
 export const Contact = () => {
   const trans = useLanguageStore((state) => state.trans);
+  const { getToken } = useAuth();
 
+  const hand = async () => {
+    try {
+      const token = await getToken();
+      const res = await axios.get("http://localhost:3030/api/beetle/product", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="border-t border-gray-50 bg-[#FFFFFF] py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -77,6 +93,7 @@ export const Contact = () => {
               ></textarea>
               <button
                 type="button"
+                onClick={hand}
                 className="bg-primary w-full rounded-lg py-3 font-bold text-white"
               >
                 {trans.contact.sendBtn}
