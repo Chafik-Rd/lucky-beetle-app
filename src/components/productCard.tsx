@@ -15,7 +15,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       className="group hover:border-secondary/50 relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:shadow-xl"
     >
       <div className="relative flex h-64 items-center justify-center bg-[#F8F9FA] p-8 transition-colors duration-300 group-hover:bg-white">
-        {product?.tag && (
+        {product.entityType === "beetle" && product?.tag && (
           <span className="text-primary absolute top-4 left-4 z-10 rounded-full border border-gray-100 bg-white/90 px-3 py-1 text-[10px] font-bold tracking-wider uppercase shadow-sm backdrop-blur">
             {product.tag}
           </span>
@@ -29,7 +29,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-secondary mb-1 text-xs font-medium tracking-wider uppercase">
-          {product.scientific}
+          {product.entityType === "beetle" ? product.scientific : product.category}
         </p>
         <h3 className="group-hover:text-primary mb-1 line-clamp-1 text-lg font-bold text-gray-800 transition-colors">
           {lang === "th" ? product.name.th : product.name.en}
